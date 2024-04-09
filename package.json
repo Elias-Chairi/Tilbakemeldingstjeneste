@@ -1,0 +1,26 @@
+{
+  "name": "tilbakemeldingstjeneste",
+  "version": "1.0.0",
+  "description": "Fagprøve-workshop",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.5.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elias-Chairi/Tilbakemeldingstjeneste.git"
+  },
+  "author": "Elias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elias-Chairi/Tilbakemeldingstjeneste/issues"
+  },
+  "homepage": "https://github.com/Elias-Chairi/Tilbakemeldingstjeneste#readme"
+}
