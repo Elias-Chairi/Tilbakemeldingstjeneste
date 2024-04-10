@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { createContext, useContext } from "solid-js";
+import { createSignal } from "solid-js";
 
 // Firebase public configuration
 const firebaseConfig = {
@@ -18,27 +18,16 @@ const firebaseConfig = {
 // const data = { Feedback, User };
 // console.log(data);
 
-const FirestoreContext = createContext();
+const [firestore, setFirestore] = createSignal({});
 
-export default function FirestoreProvider(props) {
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
-  // Initialize Cloud Firestore and get a reference to the service
-  const db = getFirestore(app);
+console.log("Set Cloud Firestore")
+setFirestore({ db });
 
-  const firestore = {
-    db,
-  };
 
-  return (
-    <FirestoreContext.Provider value={firestore}>
-      {props.children}
-    </FirestoreContext.Provider>
-  );
-}
-
-export function useFirestore() {
-  return useContext(FirestoreContext);
-}
+export default firestore

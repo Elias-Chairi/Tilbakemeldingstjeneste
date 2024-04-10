@@ -1,8 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import App from "../components/App.jsx";
+import FeedbackButton from "../components/Feedback/FeedbackButton"
+import LoginButton from "../components/Login/LoginButton"
+
 ---
 
-<Layout title="Welcome to Astro.">
-  <App client:only="solid-js" />
+<Layout title="Tilbakemelding">
+  <h1>Tilbakemeldingstjeneste</h1>
+  <FeedbackButton client:only="solid-js">
+    Gi oss din tilbakemelding!
+  </FeedbackButton>
+  <LoginButton client:only="solid-js">
+    Logg på
+  </LoginButton>
 </Layout>

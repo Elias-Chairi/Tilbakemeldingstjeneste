@@ -1,8 +1,10 @@
+import Dialog from "../Dialog/Dialog";
+
 const FeedbackDialog = (props) => {
   return (
-    <dialog ref={props.ref}>
+    <Dialog ref={props.ref}>
       <h3>Hei</h3>
-    </dialog>
+    </Dialog>
   );
 };
 

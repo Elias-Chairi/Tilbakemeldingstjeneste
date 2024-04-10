@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 interface Props {
 	title: string;
 }
@@ -15,8 +17,35 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
+
+<style is:global>
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	button {
+		padding: 10px;
+		background-color: #d9dae3;
+		border: 1px solid #a6a8bb;
+		border-radius: 3px;
+	}
+	button:hover {
+		background-color: #c9cce3;
+	}
+	button:active {
+		background-color: #9b9eb5;
+	}
+	button:focus {
+		outline: none;
+	}
+	button:focus-visible {
+		outline: 1px solid black;
+	}
+	
+</style>
