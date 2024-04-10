@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import FeedbackButton from "../components/Feedback/FeedbackButton"
-import LoginButton from "../components/Login/LoginButton"
-
+import FeedbackButton from "../components/Feedback/FeedbackButton";
+import LoginButton from "../components/Login/LoginButton";
+import User from "../components/User/User";
 ---
 
 <Layout title="Tilbakemelding">
@@ -10,7 +10,6 @@ import LoginButton from "../components/Login/LoginButton"
   <FeedbackButton client:only="solid-js">
     Gi oss din tilbakemelding!
   </FeedbackButton>
-  <LoginButton client:only="solid-js">
-    Logg på
-  </LoginButton>
+  <LoginButton client:only="solid-js"> Logg på </LoginButton>
+  <User client:only="solid-js"/>
 </Layout>

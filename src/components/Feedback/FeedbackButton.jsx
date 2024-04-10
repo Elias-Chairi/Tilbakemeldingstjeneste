@@ -1,7 +1,7 @@
-import firestore from "../../stores/Firestore";
 import { collection, getDocs, doc, getDoc, onSnapshot } from "firebase/firestore";
 import FeedbackDialog from "../Feedback/FeedbackDialog";
 import { createEffect, createSignal } from "solid-js";
+import { firestore } from "../../stores/Firestore";
 
 const FeedbackButton = (props) => {
   let dialogRef;
