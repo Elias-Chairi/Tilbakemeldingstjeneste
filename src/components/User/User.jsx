@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 
 const User = () => {
   return (
-    <Show when={isLoggedIn()}>
+    <Show when={isLoggedIn() && displayName()}>
       <p>
         {!isAdmin()
           ? `Hei ${displayName()}! Det ser ut som du ikke er en administator for tjenesten. Kontakt utvikler for mer informasjon.`

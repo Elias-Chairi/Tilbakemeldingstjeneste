@@ -71,3 +71,7 @@ dist/
 
 # generated types
 .astro/
+
+
+# secrets
+secrets

@@ -7,9 +7,19 @@ import User from "../components/User/User";
 
 <Layout title="Tilbakemelding">
   <h1>Tilbakemeldingstjeneste</h1>
-  <FeedbackButton client:only="solid-js">
-    Gi oss din tilbakemelding!
-  </FeedbackButton>
-  <LoginButton client:only="solid-js"> Logg på </LoginButton>
-  <User client:only="solid-js"/>
+
+  <div>
+    <FeedbackButton client:only="solid-js">
+      Gi oss din tilbakemelding!
+    </FeedbackButton>
+    <LoginButton client:only="solid-js" />
+  </div>
+  <User client:only="solid-js" />
 </Layout>
+
+<style>
+  div {
+    display: flex;
+    gap: 5px;
+  }
+</style>
