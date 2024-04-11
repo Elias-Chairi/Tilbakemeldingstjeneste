@@ -1,0 +1,14 @@
+.feedbackContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.table {
+    width: 100%;
+    padding: 20px;
+    border-collapse: collapse;
+}
+
+.table td, .table th {
+    border: solid black 1px;
+}

@@ -1,12 +1,12 @@
 ---
 import AdminLinks from "../components/AdminLinks/AdminLinks";
 import Layout from "../layouts/Layout.astro";
+import FeedBackPage from "../components/FeedbackPage/FeedbackPage"
 
 
 ---
 
 <Layout title="Tilbakemeldinger">
-
-    
+    <FeedBackPage client:only="solid-js"/>
     <AdminLinks path={Astro.url.pathname} client:only="solid-js"/>
 </Layout>
