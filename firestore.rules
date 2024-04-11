@@ -19,11 +19,11 @@ service cloud.firestore {
       allow read: if request.auth != null;
     }
 
-    match /mission/{missionId} {
+    match /missions/{missionId} {
       allow read, write: if request.auth.token.admin == true
     }
     
-    match /mission/{missionId}/comments/{commentId} {
+    match /missions/{missionId}/comments/{commentId} {
       allow read, create: if request.auth.token.admin == true
       allow update, delete: if request.auth.token.admin == true && request.auth.uid == resource.data.uid
     }
