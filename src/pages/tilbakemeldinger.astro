@@ -1,0 +1,12 @@
+---
+import AdminLinks from "../components/AdminLinks/AdminLinks";
+import Layout from "../layouts/Layout.astro";
+
+
+---
+
+<Layout title="Tilbakemeldinger">
+
+    
+    <AdminLinks path={Astro.url.pathname} client:only="solid-js"/>
+</Layout>

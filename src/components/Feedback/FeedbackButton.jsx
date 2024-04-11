@@ -7,13 +7,13 @@ const FeedbackButton = (props) => {
   let dialogRef;
   const [firestoreFeedback, setFirestoreFeedback] = createSignal();
 
-  getDocs(collection(db, "feeback"))
-    .then((querySnapshot) => querySnapshot.docs[0].data())
-    .then((d) => setFirestoreFeedback(d));
+  // getDocs(collection(db, "feeback"))
+  //   .then((querySnapshot) => querySnapshot.docs[0].data())
+  //   .then((d) => setFirestoreFeedback(d));
 
-  createEffect(() => {
-    console.log({ firestoreFeedback: firestoreFeedback() });
-  });
+  // createEffect(() => {
+  //   console.log({ firestoreFeedback: firestoreFeedback() });
+  // });
 
   return (
     <>
