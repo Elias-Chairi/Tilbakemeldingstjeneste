@@ -1,6 +1,7 @@
 import { For, Show, createResource, createSignal, onCleanup } from "solid-js";
 import { isAdmin, isLoggedIn } from "../../stores/Auth";
 import {
+  addDoc,
   collection,
   deleteDoc,
   doc,
@@ -23,6 +24,18 @@ const Proiority = (props) => {
   const [priority] = createResource(fetchUser);
   return <Show when={!priority.loading}>{priority().data().name}</Show>;
 };
+
+const transformToMission = (feedbackDocument) => {
+  const feedback = feedbackDocument.data()
+  addDoc(collection(db, "missions"), {
+    feedback,
+    missionStateId: "default",
+    closed: false,
+    priorityId: feedback.priorityId,
+  }).then(()=>{
+    window.location.href = "/oppdrag"
+  })
+}
 
 const FeedbackPage = () => {
   const [feedback, setFeedback] = createSignal([]);
@@ -61,6 +74,7 @@ const FeedbackPage = () => {
                 <td>{doc.data().date.toDate().toLocaleString()}</td>
                 <td>
                   <button onClick={() => deleteDoc(doc.ref)}>Slett</button>
+                  <button onClick={() => transformToMission(doc)}>Omgjør til oppdrag</button>
                 </td>
               </tr>
             )}
