@@ -64,4 +64,5 @@ export {
   isAdmin,
   updateDisplayName,
   forceRefreshToken,
+  uid,
 };

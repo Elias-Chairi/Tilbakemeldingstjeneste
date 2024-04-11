@@ -14,6 +14,8 @@ const Dialog = (props) => {
       onClick={(event) => {
         props.onClick?.()
 
+        if (event.clientX == 0 && event.clientY == 0) return
+
         const rect = dialogRef().getBoundingClientRect();
         var isInDialog =
           rect.top <= event.clientY &&
