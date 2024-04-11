@@ -32,7 +32,7 @@ const FeedbackDialog = (props) => {
             ...(isLoggedIn() ? { uid: uid() } : { name: name }),
             priorityId: priority,
           }).then(() => {
-            dialogRef.close()
+            dialogRef.close();
           });
         }}
       >
@@ -51,11 +51,15 @@ const FeedbackDialog = (props) => {
               Navn fra bruker: <b>{displayName()}</b>
             </label>
           </Show>
-          <textarea
-            class={styles.textarea}
-            name="message"
-            onInput={(e) => setMessage(e.target.value)}
-          />
+          <br />
+          <label>
+            Melding:
+            <textarea
+              class={styles.textarea}
+              name="message"
+              onInput={(e) => setMessage(e.target.value)}
+            />
+          </label>
           <PriorityRadio name="priority" />
         </div>
         <button

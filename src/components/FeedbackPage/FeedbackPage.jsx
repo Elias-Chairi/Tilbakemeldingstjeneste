@@ -15,17 +15,17 @@ import User from "../Fetchers/User";
 import Proiority from "../Fetchers/Proiority";
 
 const transformToMission = (feedbackDocument) => {
-  const feedback = feedbackDocument.data()
+  const feedback = feedbackDocument.data();
   addDoc(collection(db, "missions"), {
     feedback,
     date: serverTimestamp(),
     missionStateId: "default",
     closed: false,
     priorityId: feedback.priorityId,
-  }).then(()=>{
-    window.location.href = "/oppdrag"
-  })
-}
+  }).then(() => {
+    window.location.href = "/oppdrag";
+  });
+};
 
 const FeedbackPage = () => {
   const [feedback, setFeedback] = createSignal([]);
@@ -55,7 +55,9 @@ const FeedbackPage = () => {
             {(doc, index) => (
               <tr>
                 <td>
-                  <User uid={doc.data().uid} />
+                  <Show when={doc.data().uid} fallback={doc.data()?.name}>
+                    <User uid={doc.data().uid} />
+                  </Show>
                 </td>
                 <td>{doc.data().message}</td>
                 <td>
@@ -64,7 +66,9 @@ const FeedbackPage = () => {
                 <td>{doc.data().date.toDate().toLocaleString()}</td>
                 <td>
                   <button onClick={() => deleteDoc(doc.ref)}>Slett</button>
-                  <button onClick={() => transformToMission(doc)}>Omgjør til oppdrag</button>
+                  <button onClick={() => transformToMission(doc)}>
+                    Omgjør til oppdrag
+                  </button>
                 </td>
               </tr>
             )}

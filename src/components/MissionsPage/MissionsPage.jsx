@@ -44,17 +44,23 @@ const MissionsPage = () => {
               </div>
               <div class={styles.feedback}>
                 <p>
-                  <b>Innsender:</b> <User uid={doc.data().feedback.uid} />
+                  <b>Innsender: </b>
+                  <Show
+                    when={doc.data().feedback.uid}
+                    fallback={doc.data().feedback?.name}
+                  >
+                    <User uid={doc.data().feedback.uid} />
+                  </Show>
                 </p>
                 <p>
-                  <b>Dato:</b>{" "}
+                  <b>Dato: </b>
                   {doc.data().feedback.date.toDate().toLocaleString()}
                 </p>
                 <p>
-                  <b>Melding:</b> {doc.data().feedback.message}
+                  <b>Melding: </b> {doc.data().feedback.message}
                 </p>
                 <p>
-                  <b>Prioritet:</b>{" "}
+                  <b>Prioritet: </b>
                   <Proiority id={doc.data().feedback.priorityId} />
                 </p>
               </div>
