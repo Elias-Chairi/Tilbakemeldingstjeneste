@@ -1,9 +1,33 @@
 rules_version = '2';
-
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if true;
+  
+    match /users/{userId} {
+      allow update, delete: if request.auth != null && request.auth.uid == userId;
+      allow read, create: if request.auth != null;
+    }
+    
+    match /feedback/{feedbackId} {
+      allow read: if request.auth.uid == resource.data.uid;
+    }
+
+    match /priority/{priorityId} {
+      allow write: if false
+      allow read: if request.auth != null;
+    }
+
+    match /mission/{missionId} {
+      allow read, write: if request.auth.token.admin == true
+    }
+    
+    match /mission/{missionId}/comments/{commentId} {
+      allow read, create: if request.auth.token.admin == true
+      allow update, delete: if request.auth.token.admin == true && request.auth.uid == resource.data.uid
+    }
+
+    match /missionState/{missionStateId} {
+    	allow write: if false
+      allow read: if request.auth != null;
     }
   }
 }
