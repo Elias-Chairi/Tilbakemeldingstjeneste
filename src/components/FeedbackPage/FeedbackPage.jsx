@@ -2,6 +2,7 @@ import { For, Show, createResource, createSignal, onCleanup } from "solid-js";
 import { isAdmin, isLoggedIn } from "../../stores/Auth";
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   onSnapshot,
@@ -45,6 +46,7 @@ const FeedbackPage = () => {
             <th>Melding</th>
             <th>Prioritet</th>
             <th>Dato</th>
+            <th>Handlinger</th>
           </tr>
           <For each={feedback()}>
             {(doc, index) => (
@@ -57,6 +59,9 @@ const FeedbackPage = () => {
                   <Proiority id={doc.data().priorityId} />
                 </td>
                 <td>{doc.data().date.toDate().toLocaleString()}</td>
+                <td>
+                  <button onClick={() => deleteDoc(doc.ref)}>Slett</button>
+                </td>
               </tr>
             )}
           </For>
