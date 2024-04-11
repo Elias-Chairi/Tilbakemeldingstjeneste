@@ -8,7 +8,10 @@ service cloud.firestore {
     }
     
     match /feedback/{feedbackId} {
-      allow read: if request.auth.uid == resource.data.uid;
+      allow read: if request.auth.uid == resource.data.uid || request.auth.token.admin == true;
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow create: if request.auth == null && request.resource.data.uid == null;
+      allow delete: if request.auth.token.admin == true;
     }
 
     match /priority/{priorityId} {
