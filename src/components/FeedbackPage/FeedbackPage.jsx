@@ -4,31 +4,21 @@ import {
   addDoc,
   collection,
   deleteDoc,
-  doc,
-  getDoc,
   onSnapshot,
   orderBy,
   query,
+  serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../../stores/Firestore";
 import styles from "./styles.module.css";
-
-const User = (props) => {
-  const fetchUser = () => getDoc(doc(db, "users", props.uid));
-  const [user] = createResource(fetchUser);
-  return <Show when={!user.loading}>{user().data().name}</Show>;
-};
-
-const Proiority = (props) => {
-  const fetchUser = () => getDoc(doc(db, "priority", props.id));
-  const [priority] = createResource(fetchUser);
-  return <Show when={!priority.loading}>{priority().data().name}</Show>;
-};
+import User from "../Fetchers/User";
+import Proiority from "../Fetchers/Proiority";
 
 const transformToMission = (feedbackDocument) => {
   const feedback = feedbackDocument.data()
   addDoc(collection(db, "missions"), {
     feedback,
+    date: serverTimestamp(),
     missionStateId: "default",
     closed: false,
     priorityId: feedback.priorityId,
