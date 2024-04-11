@@ -20,7 +20,7 @@ const LoginDialog = (props) => {
               updateDisplayName(name)
             })
             .catch((error) => {
-              console.log({ error });
+              console.error(error);
             });
         }}
       >
